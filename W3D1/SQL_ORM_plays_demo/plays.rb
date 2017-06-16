@@ -137,7 +137,7 @@ class Playwright
       SELECT
         *
       FROM
-        playes
+        plays
       WHERE
         playwright_id = ?
     SQL
