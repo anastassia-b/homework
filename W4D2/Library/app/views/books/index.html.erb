@@ -4,7 +4,5 @@
 <%#= ruby code that we want to render %> -->
 
 <ul>
-  <% @books.each do |book| %>
-    <li><%= book.title %></li>
-  <% end %>
+  <%= render @books %>
 </ul>
