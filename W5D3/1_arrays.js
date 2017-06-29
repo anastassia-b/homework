@@ -1,47 +1,44 @@
 //1. Fundamentals
+//Monkey Patching Array class
 
-function mysteryScoping1() {
-  var x = 'out of block';
-  if (true) {
-    var x = 'in block';
-    console.log(x);
-  }
-  console.log(x);
-}
+Array.prototype.uniq = function() {
+  let uniqueArray = [];
 
-function mysteryScoping2() {
-  const x = 'out of block';
-  if (true) {
-    const x = 'in block';
-    console.log(x);
-  }
-  console.log(x);
-}
+  this.forEach(function (el) {
+    if (!uniqueArray.includes(el)) {
+      uniqueArray.push(el);
+    }
+  });
+  return uniqueArray;
+};
 
-function mysteryScoping3() {
-  const x = 'out of block';
-  if (true) {
-    var x = 'in block';
-    console.log(x);
-  }
-  console.log(x);
-}
 
-function mysteryScoping4() {
-  let x = 'out of block';
-  if (true) {
-    let x = 'in block';
-    console.log(x);
-  }
-  console.log(x);
-}
+//Time complexity is N^2, but we can reduce it to N by using a hash.
+Array.prototype.twoSum2 = function() {
+  const pairs = [];
 
-function mysteryScoping5() {
-  let x = 'out of block';
-  if (true) {
-    let x = 'in block';
-    console.log(x);
+  for (let i = 0; i < this.length; i++) {
+    for (let j = (i+1); j < this.length; j++) {
+      if (this[i] + this[j] === 0) {
+        pairs.push([i, j]);
+      }
+    }
   }
-  let x = 'out of block again';
-  console.log(x);
-}
+  return pairs;
+};
+
+Array.prototype.transpose = function() {
+  let transpose_arr = [];
+
+  for (let i = 0; i < this.length; i++) {
+    let row = [];
+    for (let j = 0; j < this.length; j++) {
+      row.push(this[j][i]);
+    }
+    transpose_arr.push(row);
+  }
+
+  return transpose_arr;
+};
+
+console.log([1, 2, 3], [4, 5, 6], [7, 8, 9]);
